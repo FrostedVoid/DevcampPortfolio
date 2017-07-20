@@ -11,6 +11,10 @@ class Portfolio < ApplicationRecord
   end
   #-----------------------
 
+  def self.by_position
+    order("position ASC")
+  end
+
   scope :portfolio_post, -> {where(subtitle: 'My great service')}
 
   # Sets default images

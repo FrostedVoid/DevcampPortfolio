@@ -3,9 +3,9 @@ class PortfoliosController < ApplicationController
   layout 'portfolio'
   access all: [:show, :index, :angular], user: {except: [:destroy, :new, :create, :update, :edit]}, site_admin: :all
 
-  def index                          # Gets Portfolio items
-    @portfolio_items = Portfolio.all # Can specify what to display on page
-  end
+  def index                                            # Gets Portfolio items
+    @portfolio_items = Portfolio.by_position           # Can specify what to display on page
+  end                                                  # Sorted based on last updated
   # Demonstration Purposes
   def angular
     @angular_portfolio_items = Portfolio.angular
