@@ -1,0 +1,9 @@
+<% if flash[:alert] %>
+  <%= js add_gritter(flash[:alert], title: "Hey You!", sticky: false) %>
+
+<% elseif flash[:error] %>
+  <%= js add_gritter(flash[:error], title: "Hey You!", sticky: false) %>
+
+<% else %>
+  <%= js add_gritter(flash[:notice], title: "Hey You!", sticky: false) %>
+<% end %>
