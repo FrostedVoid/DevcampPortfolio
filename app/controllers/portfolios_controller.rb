@@ -6,10 +6,6 @@ class PortfoliosController < ApplicationController
   def index                                            # Gets Portfolio items
     @portfolio_items = Portfolio.by_position           # Can specify what to display on page
   end                                                  # Sorted based on last updated
-  # Demonstration Purposes
-  def angular
-    @angular_portfolio_items = Portfolio.angular
-  end
 
   def sort
     params[:order].each do |key, value|
@@ -20,10 +16,15 @@ class PortfoliosController < ApplicationController
     # Don't render a new view
   end
 
+  # Demonstration Purposes
+  def angular
+    @angular_portfolio_items = Portfolio.angular
+  end
+
   def new
     @portfolio_item = Portfolio.new
     # Creates three types of 'technologies', available to form
-    3.times { @portfolio_item.technologies.build }
+    # 3.times { @portfolio_item.technologies.build }
   end
 
   def create
@@ -72,7 +73,7 @@ class PortfoliosController < ApplicationController
                                       :subtitle,
                                       :body,
                                       :image,
-                                      technologies_attributes: [:name]
+                                      technologies_attributes: [:id, :name, :_destroy]
                                      )
   end
   def set_portfolio_item
