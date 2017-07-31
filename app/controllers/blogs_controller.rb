@@ -7,14 +7,15 @@ class BlogsController < ApplicationController
   # GET /blogs.json
   def index
     @blogs = Blog.page(params[:page]).per(5)
-    ### Refer to bottom
-    ##  of page
     @page_title = "My Portfolio Blog"
   end
 
   # GET /blogs/1
   # GET /blogs/1.json
   def show
+    @blog = Blog.includes(:comments).friendly.find(params[:id])
+    @comment = Comment.new
+
     @page_title = @blog.title
     @seo_keywords = @blog.body
   end
@@ -35,11 +36,9 @@ class BlogsController < ApplicationController
 
     respond_to do |format|
       if @blog.save
-        format.html { redirect_to @blog, notice: 'Blog was successfully created.' }
-        format.json { render :show, status: :created, location: @blog }
+        format.html { redirect_to @blog, notice: 'Your post is now live.' }
       else
         format.html { render :new }
-        format.json { render json: @blog.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -61,7 +60,7 @@ class BlogsController < ApplicationController
   def destroy
     @blog.destroy
     respond_to do |format|
-      format.html { redirect_to blogs_url, notice: 'Blog was successfully destroyed.' }
+      format.html { redirect_to blogs_url, notice: 'Post was removed.' }
       format.json { head :no_content }
     end
   end
@@ -72,8 +71,8 @@ class BlogsController < ApplicationController
     elsif @blog.published?
       @blog.draft!
     end
-
-    redirect_to blogs_url, notice: 'Post status has been updaged.'
+        
+    redirect_to blogs_url, notice: 'Post status has been updated.'
   end
 
   private
@@ -87,24 +86,3 @@ class BlogsController < ApplicationController
       params.require(:blog).permit(:title, :body)
     end
 end
-
-###
-    # Bug demo: (MAY NOT WORK EVERY TIME!) 2 of 20 blogs showing, not good
-    # @blogs = Blog.limit(2)
-    # puts @blogs.inspect
-
-    # Displays information, on said bug, in the console.
-
-    # Can put: 'puts "*" * 500' brfore and after line 12
-    # to isolate the desired information.
-
-##
-    # byebug
-
-    # byebug isolates what stage the bug appears
-
-    # Can look through your application while it
-    # is suspeneded until 'byebug' isn't called.
-
-    # Have a plan to place byebug, don't place in
-    # random places!
