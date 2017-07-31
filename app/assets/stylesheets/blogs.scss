@@ -1,7 +1,3 @@
-// Place all the styles related to the Blogs controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-
 @import "bootstrap";
 @import "font-awesome";
 @import "gritter";
@@ -17,7 +13,7 @@
 }
 
 body {
-  font-family: 'Lato', sans-serif;
+  font-family: Georgia, "Times New Roman", Times, serif;
   color: #555;
 }
 
@@ -27,7 +23,7 @@ h3, .h3,
 h4, .h4,
 h5, .h5,
 h6, .h6 {
-  font-family: 'Roboto Slab', serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: normal;
   color: #333;
 }
@@ -193,58 +189,4 @@ h6, .h6 {
 
 .comment-name {
   font-weight: 700;
-}
-
-.blogcrumb a {
-  font-size: 1.25em;
-  margin: 0px 10px 0px 10px;
-}
-
-.blog-nav {
-  margin-bottom: 30px;
-}
-
-.blog-sidebar-source {
-  margin-top: 20px;
-}
-
-.blog-body img {
-  width: 100%;
-}
-
-.blog-body img[alt=xlarge] {
-  width: 800px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-
-.blog-body img[alt=large] {
-  width: 600px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-
-.blog-body img[alt=medium] {
-  width: 400px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-
-.blog-body img[alt=small] {
-  width: 200px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-
-.topic-index > .card {
-  margin: 10px;
-  padding: 20px;
-}
-
-/*
- * Custom styles
- */
-
-.social-links li a{
-  font-size: 1em;
 }
