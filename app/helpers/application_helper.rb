@@ -42,10 +42,11 @@ module ApplicationHelper
         url: portfolios_path,
         title: 'Portfolio'
       },
-      {
-        url: tech_news_path,
-        title: 'Tech News'
-      },
+      # Remove '#' when twitter keys are added
+#      {
+#        url: tech_news_path,
+#        title: 'Tech News'
+#      },
     ]
   end
 
@@ -74,5 +75,4 @@ module ApplicationHelper
   def alert_generator msg
     js add_gritter(msg, title: "Hunter Sorensen Portfolio", sticky: false)
   end
-
 end
